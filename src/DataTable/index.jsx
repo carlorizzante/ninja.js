@@ -2,18 +2,7 @@ import React, { useState } from 'react'
 import Pagination from './Pagination'
 import Row from './Row'
 import Search from './Search'
-
-const ROWS_PER_PAGE = 4
-
-const calculateTotalNumberOfPages = (rows, rowsPerPage = ROWS_PER_PAGE) => {
-  if (rowsPerPage === 0) return 0
-  return Math.ceil(rows.length / rowsPerPage)
-}
-
-const rowsInPageNumber = (pageNumber, rowsPerPage = ROWS_PER_PAGE) => {
-  const startIndex = pageNumber * rowsPerPage
-  return [startIndex, startIndex + rowsPerPage]
-}
+import { calculateTotalNumberOfPages, rowsInPageNumber } from './utils'
 
 const DataTable = ({ rows: passedRows, rowsPerPage }) => {
   const [rows, setRows] = useState(passedRows)
