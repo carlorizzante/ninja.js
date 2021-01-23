@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AppContext from '../AppContext'
 
-const Page = ({ pageNumber, currentPageNumber, onChange }) => {
-  const isActivePage = () => currentPageNumber === pageNumber
-  const renderedPageNumber = () => pageNumber + 1
+const Page = ({ pageNumber }) => {
+  const {
+    currentPageNumber,
+    setCurrentPageNumber,
+  } = useContext(AppContext)
 
   const handleClick = (event) => {
     event.preventDefault()
-    onChange(pageNumber)
+    setCurrentPageNumber(pageNumber)
   }
+
+  const isActivePage = () => currentPageNumber === pageNumber
+  const renderedPageNumber = () => pageNumber + 1
 
   if (isActivePage()) {
     return (

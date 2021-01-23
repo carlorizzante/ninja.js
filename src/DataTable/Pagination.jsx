@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Page from './Page'
+import AppContext from '../AppContext'
 
-const Pagination = ({ currentPageNumber, totalNumberOfPages, onChange }) => {
+const Pagination = () => {
+  const { totalNumberOfPages } = useContext(AppContext)
+
   const pages =
     Array
       .from(Array(totalNumberOfPages).keys())
       .map(pageNumber => {
         return <Page
           key={pageNumber}
-          currentPageNumber={currentPageNumber}
-          pageNumber={pageNumber}
-          onChange={onChange} />
+          pageNumber={pageNumber} />
       })
 
   if (pages.length <= 1) {
